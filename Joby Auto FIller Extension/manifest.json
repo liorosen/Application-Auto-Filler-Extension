@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Joby Application Auto-filler",
+  "version": "1.0",
+  "description": "Automatically fills job application forms with your information",
+  "permissions": ["tabs", "storage", "scripting", "activeTab", "notifications"],
+  "host_permissions": ["<all_urls>", "https://www.comeet.co/*"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "128": "Joby_Icon128.png"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}
